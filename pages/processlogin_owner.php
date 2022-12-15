@@ -16,7 +16,7 @@ if ($upass == ''){
         <?php
 }else{
 //create some sql statement             
-        $sql = "SELECT ID,e.FIRST_NAME,e.LAST_NAME,e.GENDER,e.BIRTHDATE,e.ADDRESS,e.PHONE_NUMBER,e.EMAIL_ADD,p.PET_NAME,p.PET_GENDER,p.PET_CATEG,p.PET_COLOR,p.BREED,p.PET_AGE,p.PET_WEIGHT,t.TYPE
+        $sql = "SELECT ID,u.CUST_ID,e.FIRST_NAME,e.LAST_NAME,e.GENDER,e.BIRTHDATE,e.ADDRESS,e.PHONE_NUMBER,e.EMAIL_ADD,p.PET_NAME,p.PET_GENDER,p.PET_CATEG,p.PET_COLOR,p.BREED,p.PET_AGE,p.PET_WEIGHT,t.TYPE
         FROM  `users_owner` u
         join `pet_owner` e on e.CUST_ID=u.CUST_ID
         JOIN `pets` p ON e.CUST_ID=p.CUST_ID
@@ -33,6 +33,7 @@ if ($upass == ''){
                 $found_user  = mysqli_fetch_array($result);
                 //fill the result to session variable
                 $_SESSION['MEMBER_ID']  = $found_user['ID']; 
+                $_SESSION['CUST_ID']  = $found_user['CUST_ID'];
                 $_SESSION['FIRST_NAME'] = $found_user['FIRST_NAME']; 
                 $_SESSION['LAST_NAME']  =  $found_user['LAST_NAME'];
                 $_SESSION['GENDER']  =  $found_user['GENDER'];  
