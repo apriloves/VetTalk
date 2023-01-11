@@ -1,7 +1,7 @@
 <?php
-include'includes/connection.php';
-//include'includes/topp.php';
-include'includes/sidebar.php';
+include'../includes/connection.php';
+//include'../includes/topp.php';
+include'../includes/sidebar.php';
 // session_start();
 $product_ids = array();
 //session_destroy();
@@ -72,7 +72,7 @@ function pre_r($array){
                 <div class="col-lg-12">
                   <div class="card shadow mb-0">
                   <div class="card-header py-2">
-                    <h4 class="m-1 text-lg text-primary">Product category</h4>
+                    <h4 class="m-1 font-weight-bold text-primary">Product Category</h4>
                   </div>
                         <!-- /.panel-heading -->
                         <div class="card-body">
@@ -85,7 +85,7 @@ function pre_r($array){
                                 <a class="nav-link" href="#" data-target="#vitamins" data-toggle="tab">Vitamins</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="#catfood" data-toggle="tab">Cat food</a>
+                                <a class="nav-link" href="#catfood" data-toggle="tab">Cat Food</a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" href="#dogfood" data-toggle="tab">Dog Food</a>

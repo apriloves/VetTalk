@@ -141,10 +141,13 @@ if ($Aa=='User'){
             <div class="card shadow mb-4 col-xs-12 col-md-15 border-bottom-primary">
                 <div class="card-header py-3">
                         <h4 class="m-2 font-weight-bold text-primary">Medical History
-                            <a  href="#" data-toggle="modal" data-target="#aModal" type="button" style="float:right" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"> <i class="fas fa-fw fa-plus"></i> </a>
-                        </h4> 
+                            <a  href="#" data-toggle="modal" data-target="#aModal" type="button" style="float:right" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"> <i class="fas fa-fw fa-plus"></i> 
+                            </a>
+                       </h4>
+                       
                 </div>
                 <div class="card-body">
+                <a  href="#" data-toggle="modal" data-target="#aModal" type="button" style="float:right" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"> <i class="fas fa-fw fa-plus"></i>  Laboratory Appointment </a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
                             <thead>
@@ -238,28 +241,16 @@ include'../includes/footer.php';
           <form role="form" method="post" action="med_rec_transac.php?action=add">
             <div class="form-group">
               <label> Pet Name </label>
-              
               <?php
                 
-                $query ='SELECT PET_ID, PET_NAME FROM pets';
-                $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                if($result->num_rows> 0){
-                  $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
-                }
-            
-            ?>
-            <select class="form-control" name="petname" required >
-              <option>  </option>
-                <?php 
-                  foreach ($options as $option){
+                $query ='SELECT PET_ID, PET_NAME FROM pets WHERE PET_ID = ' .$_GET['id'];
+                $query_run = mysqli_query($db,$query);
+                $row = mysqli_fetch_array($query_run);
                 ?>
-                <option>
-                   <?php echo $option['PET_ID']; echo " - "; echo  $option['PET_NAME']; ?> 
-                </option>
-                <?php 
-              }
-                 ?>
-          </select>
+                <input id="pet" type="text" readonly name="petname" value="<?php echo $row['PET_NAME']?>" class="form-control" placeholder=" ">
+            
+            
+          
         </div>
         
            <div class="form-group">

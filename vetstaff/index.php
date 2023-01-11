@@ -80,9 +80,9 @@ if ($Aa=='User'){
             </div>
 
           </div>
-            <!-- Employee ROW -->
+            <!-- Dog ROW -->
           <div class="col-md-3">
-            <!-- Employee record -->
+            <!-- Dog record -->
             <div class="col-md-12 mb-3">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
@@ -106,36 +106,6 @@ if ($Aa=='User'){
                 </div>
               </div>
             </div>
-
-            
-
-           <!-- Employee ROW 
-           <div class="col-md-3"> -->
-            <!-- Employee record 
-            <div class="col-md-12 mb-3">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-0">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Employees</div>
-                      <div class="h6 mb-0 font-weight-bold text-gray-800">
-                        <?php 
-                        $query = "SELECT COUNT(*) FROM employee";
-                        $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "$row[0]";
-                          }
-                        ?> Record(s)
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            -->
 
             <!-- cats record -->
             <div class="col-md-12 mb-3">
@@ -196,7 +166,32 @@ if ($Aa=='User'){
                   </div>
                 </div>
               </div>
+              </div>
+
+              <div class="col-md-12 mb-3">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-0">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Appointments</div>
+                      <div class="h6 mb-0 font-weight-bold text-gray-800">
+                        <?php 
+                        $query = "SELECT COUNT(*) FROM bookings WHERE status = 'approved'";
+                        $result = mysqli_query($db, $query) or die(mysqli_error($db));
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo "$row[0]";
+                          }
+                        ?> Record(s)
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-user fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            
 
            <!-- cats record -->
           <!-- cats record 

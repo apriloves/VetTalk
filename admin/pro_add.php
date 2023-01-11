@@ -1,6 +1,6 @@
 <?php
-include'includes/connection.php';
-include'includes/sidebar.php';
+include'../includes/connection.php';
+include'../includes/sidebar.php';
   $query = 'SELECT ID, t.TYPE
             FROM users u
             JOIN type t ON t.TYPE_ID=u.TYPE_ID WHERE ID = '.$_SESSION['MEMBER_ID'].'';
@@ -83,6 +83,12 @@ $sup .= "</select>";
                             </div>
                             <div class="form-group">
                               <input type="datet" class="form-control" placeholder="Date Stock In" name="datestock" required>
+                            </div>
+                            <div class="form-group">
+                              <input type="datet" class="form-control" placeholder="Manufacture Date" name="mdate" required>
+                            </div>
+                            <div class="form-group">
+                              <input type="datet" class="form-control" placeholder="Expiration Date" name="edate" required>
                             </div>
                             <hr>
                             <button type="submit" class="btn btn-success btn-block"><i class="fa fa-check fa-fw"></i>Save</button>

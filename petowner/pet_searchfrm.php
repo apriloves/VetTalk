@@ -163,64 +163,14 @@ if ($Aa=='User'){
                       </div>
                       
                     </div>
-
-                    <div class="card-header py-3">
-                  <h5 class="m-2 font-weight-bold text-primary">Owner Information</h5>
-                </div>
-                
-                <div class="card-body">
-                    <div class="form-group row text-left">
-
-                        <div class="col-sm-3 text-primary">
-                            <h6>
-                                Full Name:<br>
-                            </h6>
-                        </div>
-
-                    <div class="col-sm-9">
-                        <h6>
-                            <?php echo $fn; ?> <?php echo $ln; ?> <br>
-                        </h6>
-                    </div>
-                </div>
-
-                <div class="form-group row text-left">
-
-                    <div class="col-sm-3 text-primary">
-                        <h6>
-                          Contact No.:<br>
-                        </h6>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <h6>
-                          <?php echo $phone; ?> <br>
-                        </h6>
-                    </div>
-                      
-                </div>
-
-                <div class="form-group row text-left">
-
-                    <div class="col-sm-3 text-primary">
-                        <h6>
-                          Email Address:<br>
-                        </h6>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <h6>
-                          <?php echo $ea; ?> <br>
-                        </h6>
-                    </div>
-                      
-                </div>
-</div>
+                  </div>
+                  <div>
                     <a href="pet.php" type="button" class="btn btn-primary bg-gradient-primary btn-block">
                       <i class="fas fa-flip-horizontal fa-fw fa-share"></i> Back 
                     </a>
                   </div>
                 </div>
+  
               
 
 <?php

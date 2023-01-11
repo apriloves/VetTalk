@@ -108,19 +108,41 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="calendar.php" data-toggle="collapse" data-target="#collapseAppointment"
+        <a class="nav-link collapsed" href="vet_calendar.php" data-toggle="collapse" data-target="#collapseVetAppointment"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Appointments</span>
+          <i class="fas fa-fw fa-calendar"></i>
+          <span>Vet Appointments</span>
         </a>
         
-        <div id="collapseAppointment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseVetAppointment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="bookings.php">Appointment's List </a>
+            <a class="collapse-item" href="vet_calendar.php">View Appointments </a>
             <a class="collapse-item" href="bookings_approved.php">Approved Appointment </a>
             <a class="collapse-item" href="bookings_denied.php">Cancelled Appointment </a>
           </div>
         </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="lab_calendar.php" data-toggle="collapse" data-target="#collapseLabAppointment"
+          aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-calendar"></i>
+          <span>Lab Appointments</span>
+        </a>
+        
+        <div id="collapseLabAppointment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="lab_calendar.php">Book Appointment </a>
+            <a class="collapse-item" href="bookings_approved.php">Approved Appointment </a>
+            <a class="collapse-item" href="bookings_denied.php">Cancelled Appointment </a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="documents.php">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Laboratory Result Files</span></a>
       </li>
 
       

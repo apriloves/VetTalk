@@ -120,12 +120,14 @@ include'../includes/sidebar.php';
                      <th>Category</th>
                      <th>Supplier</th>
                      <th>Date Stock In</th>
+                     <th>Manufacture Date</th>
+                     <th>Expiration Date</th>
                    </tr>
                </thead>
           <tbody>
 
 <?php                  
-    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, QTY_STOCK, ON_HAND, CNAME, COMPANY_NAME, p.SUPPLIER_ID, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID JOIN supplier s ON p.SUPPLIER_ID=s.SUPPLIER_ID where PRODUCT_CODE ='.$zzz.' GROUP BY `SUPPLIER_ID`, `DATE_STOCK_IN`';
+    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, QTY_STOCK, ON_HAND, CNAME, COMPANY_NAME, p.SUPPLIER_ID, DATE_STOCK_IN, MDATE, EDATE FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID JOIN supplier s ON p.SUPPLIER_ID=s.SUPPLIER_ID where PRODUCT_CODE ='.$zzz.' GROUP BY `SUPPLIER_ID`, `DATE_STOCK_IN`';
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
       
             while ($row = mysqli_fetch_assoc($result)) {
@@ -138,6 +140,8 @@ include'../includes/sidebar.php';
                 echo '<td>'. $row['CNAME'].'</td>';
                 echo '<td>'. $row['COMPANY_NAME'].'</td>';
                 echo '<td>'. $row['DATE_STOCK_IN'].'</td>';
+                echo '<td>'. $row['MDATE'].'</td>';
+                echo '<td>'. $row['EDATE'].'</td>';
                 echo '</tr> ';
                         }
 ?> 

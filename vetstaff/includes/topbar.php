@@ -1,4 +1,7 @@
 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -6,6 +9,7 @@
       <div id="content">
 
         <!-- Topbar -->
+        
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
@@ -15,6 +19,46 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item dropdown no-arrow mx-1">
+            <?php $sql = "SELECT * FROM notification WHERE status='0' ORDER BY id DESC";
+             $res = mysqli_query($db, $sql); ?>
+             
+                <a class="nav-link dropdown-toggle" href="#" id="notif" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-hidden="true" aria-expanded="false">
+                    <i class="fas fa-bell fa-fw"></i>
+                    <!-- Counter - Alerts -->
+                    <span class="badge badge-danger badge-counter"><?php echo mysqli_num_rows($res); ?></span>
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                    aria-labelledby="alertsDropdown" id="notif">
+                    <h6 class="dropdown-header">
+                        Notifications
+                    </h6>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                    <ul>
+                      <?php
+                      if (mysqli_num_rows($res) > 0) {
+                        foreach ($res as $item) {
+                      ?>
+                          
+                          
+                        <div>
+                            <div class="small text-gray-500"><?php echo $item["date"]; ?></div>
+                            <span class="font-weight-bold"><?php echo $item["text"]; ?></span>
+                        </div>
+                      <?php }
+                      } ?>
+                    
+                      </ul>
+                    </a>
+                 
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                  </div>
+                
+            </li>
+           
 
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link" href="pos.php" role="button">
@@ -75,7 +119,24 @@
           </ul>
 
         </nav>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+            <script>
+              $(document).ready(function() {
+                $("#notif").on("click", function() {
+                  $.ajax({
+                    url: 'read.php',
+                    success: function(res) {
+                      console.log(res);
+                    }
+                  });
+                });
+              });
+            </script>
         <!-- End of Topbar -->
+
+            
           
         <!-- Begin Page Content -->
         <div class="container-fluid">
+
+        

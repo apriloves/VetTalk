@@ -41,7 +41,7 @@ include'includes/sidebar.php';
 <?php                  
     $query = 'SELECT *, FIRST_NAME, LAST_NAME
               FROM transaction T
-              JOIN pet_owner P ON T.`CUST_ID`=P.`CUST_ID`
+              JOIN pet_owner P ON T.`CUST_ID`=P.`CUST_ID` WHERE T.`CUST_ID` = '.$_SESSION['CUST_ID'].'
               ORDER BY TRANS_D_ID ASC';
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
       

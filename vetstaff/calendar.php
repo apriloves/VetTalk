@@ -157,7 +157,7 @@
         $next_month = date('m', mktime(0,0,0,$month+1,1,$year));
         $next_year = date('Y', mktime(0,0,0,$month+1,1,$year));
 
-        $calendar ="<center><h2>$monthName $year </h2>";
+        $calendar ="<center><h3>$monthName $year </h3>";
         $calendar.="<a class='btn btn-primary btn-xs' href='?month=".$prev_month."&year=".$prev_year."'>Prev Month</a>";
         $calendar.="<a class='btn btn-primary btn-xs' href='?month=".date('m')."&year=".date('Y')."'>Current Month</a>";
         $calendar.="<a class='btn btn-primary btn-xs' href='?month=".$next_month."&year=".$next_year."'>Next Month</a></center>";
@@ -202,11 +202,11 @@
             //block certain days
             if($dayName=='sunday' || $dayName=='saturday')
             {
-                $calendar.="<td><h5>$currentDay</h5> <a class='btn btn-danger btn xs'> Closed </a></td>";
+                $calendar.="<td><h5>$currentDay</h5> <a class='btn btn-danger btn xs' style='color:white'> Closed </a></td>";
             }
             else if($date<date('Y-m-d'))
             {
-                $calendar.="<td><h5>$currentDay</h5> <a class='btn btn-danger btn xs'> N/A </a></td>";
+                $calendar.="<td><h5>$currentDay</h5> <a class='btn btn-secondary btn xs'> </a></td>";
             }
             else
             {

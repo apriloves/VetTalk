@@ -84,6 +84,12 @@ $sup .= "</select>";
                             <div class="form-group">
                               <input type="datet" class="form-control" placeholder="Date Stock In" name="datestock" required>
                             </div>
+                            <div class="form-group">
+                              <input type="datet" class="form-control" placeholder="Manufacture Date" name="mdate" required>
+                            </div>
+                            <div class="form-group">
+                              <input type="datet" class="form-control" placeholder="Expiration Date" name="edate" required>
+                            </div>
                             <hr>
                             <button type="submit" class="btn btn-success btn-block"><i class="fa fa-check fa-fw"></i>Save</button>
                             <button type="reset" class="btn btn-danger btn-block"><i class="fa fa-times fa-fw"></i>Reset</button>

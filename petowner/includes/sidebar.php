@@ -110,14 +110,15 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="calendar.php" data-toggle="collapse" data-target="#collapseAppointment"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
+          <i class="fas fa-fw fa-calendar"></i>
           <span>My Appointments</span>
         </a>
          
         <div id="collapseAppointment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="calendar.php">Book Appointment</a>
-            <a class="collapse-item" href="#">Appointment History</a>
+            <a class="collapse-item" href="calendar.php">Book Vet Appointment</a>
+            <a class="collapse-item" href="bookings.php">Veterinary Appointments </a>
+            <a class="collapse-item" href="bookings_lab.php">Laboratory Appointments </a>
             
           </div>
         </div>
@@ -126,12 +127,12 @@
 
       <li class="nav-item">
         <a class="nav-link" href="transaction.php">
-          <i class="fas fa-fw fa-retweet"></i>
-          <span>Transaction</span></a>
+          <i class="fas fa-fw fa-history"></i>
+          <span>Transaction History</span></a>
       </li>
      
       <li class="nav-item">
-        <a class="nav-link" href="user.php">
+        <a class="nav-link" href="documents.php">
           <i class="fas fa-fw fa-users"></i>
           <span>Documents / Files</span></a>
       </li>

@@ -26,15 +26,16 @@ if ($Aa=='User'){
             
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <h4 class="m-2 font-weight-bold text-primary" style="text-align:center">Cat's List
-              <a  href="#" data-toggle="modal" data-target="#aModal" type="button" style="float:right" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"> <i class="fas fa-fw fa-plus"></i> Add Cat</a> </h4> 
+            <h4 class="m-2 font-weight-bold text-primary" style="text-align:center"> My Cat's List
+              </h4> 
             </div>
             
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="5%">        
-                  <thead>
+                <thead>
                       <tr>
+                        <th>Pet Type</th>
                         <th>Pet Name</th>
                         <th>Pet Gender</th>
                         <th>Breed</th>
@@ -44,11 +45,12 @@ if ($Aa=='User'){
                   </thead>
                   <tbody>
                     <?php                  
-                      $query = 'SELECT p.PET_ID, p.CUST_ID, p.PET_NAME, p.PET_GENDER, p.BREED, CONCAT(s.FIRST_NAME," ", s.LAST_NAME) AS FIRST_NAME FROM pet_owner s join pets p on  p.CUST_ID = s.CUST_ID WHERE p.PET_CATEG = "cat"';
+                      $query = 'SELECT p.PET_ID, p.CUST_ID, p.PET_NAME, p.PET_GENDER, p.PET_CATEG,p.BREED, CONCAT(s.FIRST_NAME," ", s.LAST_NAME) AS FIRST_NAME FROM pet_owner s join pets p on  p.CUST_ID = s.CUST_ID WHERE p.PET_CATEG = "Cat" AND p.CUST_ID = '.$_SESSION['CUST_ID'].'';
                       $result = mysqli_query($db, $query) or die (mysqli_error($db));
         
                       while ($row = mysqli_fetch_assoc($result)) {
                       echo '<tr>';
+                      echo '<td>'. $row['PET_CATEG'].'</td>';
                       echo '<td>'. $row['PET_NAME'].'</td>';
                       echo '<td>'. $row['PET_GENDER'].'</td>';
                       echo '<td>'. $row['BREED'].'</td>';
@@ -57,26 +59,10 @@ if ($Aa=='User'){
                         <div class="btn-group">
                             
                           <div class="btn-group">
-                            <a type="button" class="btn btn-primary bg-gradient-secondary dropdown no-arrow" data-toggle="dropdown"     style="color:white;"> Action <span class="caret"></span>
-                            </a>
-                              
-                            <ul class="dropdown-menu text-center" role="menu">
-                              <li>
-                                <a type="button" class="btn btn-warning bg-gradient-primary btn-block" style="border-radius: 0px;"   href="pet_searchfrm.php?action=edit & id='.$row['PET_ID']. '">
+                            
+                                <a type="button" class="btn btn-secondary bg-gradient-primary btn-block" style="border-radius: 0px;"   href="pet_searchfrm.php?action=edit & id='.$row['PET_ID']. '">
                                   <i class="fas fa-fw fa-edit"></i> Details
                                 </a>
-                              </li>
-                              <li>
-                                <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;" href="pet_edit.php?action=edit & id='.$row['PET_ID']. '">
-                                <i class="fas fa-fw fa-edit"></i> Edit
-                                </a>
-                              </li>
-                              <li>
-                                <a type="button" class="btn btn-danger bg-gradient-danger btn-block" style="border-radius: 0px;" href="pet_del.php?action=edit & id='.$row['PET_ID']. '">
-                                <i class="fas fa-fw fa-edit"></i> Delete
-                                </a>
-                              </li>
-                            </ul>
                           </div>
                         </div> 
                           
@@ -84,23 +70,23 @@ if ($Aa=='User'){
                           
                           <div class="btn-group">
                                                         
-                            <a type="button" class="btn btn-secondary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;"> Health Records <span class="caret"></span>
+                            <a type="button" class="btn btn-primary bg-gradient-secondary dropdown no-arrow" data-toggle="dropdown" style="color:white;"> Health Records <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu text-center" role="menu">
                               <li>
-                                <a type="button" class="btn btn-primary bg-gradient-primary btn-block" style="border-radius: 0px;"   href="pet_searchfrm.php?action=edit & id='.$row['PET_ID']. '">
+                                <a type="button" class="btn btn-primary bg-gradient-primary btn-block" style="border-radius: 0px;"   href="med_record.php?action=edit & id='.$row['PET_ID']. '">
                                 <i class="fas fa-fw fa-edit"></i> Medical History
                                 </a>
                               </li>
                                 <li>
-                                <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;" href="vacc_rec.php?action=edit & id='.$row['CUST_ID']. '">
+                                <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;" href="vacc_rec.php?action=edit & id='.$row['PET_ID']. '">
                                 <i class="fas fa-fw fa-edit"></i> Vaccine Chart
                                 </a>
                               </li>
                               <li>
-                                <a type="button" class="btn btn-info bg-gradient-info btn-block" style="border-radius: 0px;" href="cust_edit.php?action=edit & id='.$row['CUST_ID']. '">
-                                <i class="fas fa-fw fa-edit"></i> Deworming
+                                <a type="button" class="btn btn-info bg-gradient-info btn-block" style="border-radius: 0px;" href="documents_pet.php?action=edit & id='.$row['PET_ID']. '">
+                                <i class="fas fa-fw fa-edit"></i> Laboratory Result
                                 </a>
                               </li>
                             </ul>

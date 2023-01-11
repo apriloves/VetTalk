@@ -1,6 +1,6 @@
 <?php
-include'includes/connection.php';
-include'includes/sidebar.php';
+include'../includes/connection.php';
+include'../includes/sidebar.php';
   $query = 'SELECT ID, t.TYPE
             FROM users u
             JOIN type t ON t.TYPE_ID=u.TYPE_ID WHERE ID = '.$_SESSION['MEMBER_ID'].'';
@@ -128,9 +128,6 @@ include'../includes/footer.php';
              <textarea rows="5" cols="50" class="form-control" placeholder="Description" name="description" required></textarea>
            </div>
            <div class="form-group">
-             <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Expiration Date" name="exp_date" required>
-           </div>
-           <div class="form-group">
              <input type="number"  min="1" max="999999999" class="form-control" placeholder="Quantity" name="quantity" required>
            </div>
            <div class="form-group">
@@ -151,6 +148,12 @@ include'../includes/footer.php';
            </div>
            <div class="form-group">
              <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Date Stock In" name="datestock" required>
+           </div>
+           <div class="form-group">
+             <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Manufacture Date" name="mdate" required>
+           </div>
+           <div class="form-group">
+             <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Expiration Date" name="edate" required>
            </div>
             <hr>
             <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>

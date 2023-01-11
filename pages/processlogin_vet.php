@@ -82,7 +82,7 @@ if ($upass == ''){
           ?>    <script type="text/javascript">
                    //then it will be redirected to index.php
                    alert("Welcome, <?php echo  $_SESSION['FIRST_NAME']; ?> !");
-                   window.location = "pos.php";
+                   window.location = "../laboratory/index.php";
                </script>
           <?php        
         

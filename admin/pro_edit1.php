@@ -1,5 +1,5 @@
 <?php
-include('includes/connection.php');
+include('../includes/connection.php');
 			$zz = $_POST['id'];
 			$pc = $_POST['prodcode'];
 			$pname = $_POST['prodname'];

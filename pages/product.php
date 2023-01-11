@@ -149,6 +149,12 @@ include'../includes/footer.php';
            <div class="form-group">
              <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Date Stock In" name="datestock" required>
            </div>
+           <div class="form-group">
+             <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Manufacture Date" name="mdate" required>
+           </div>
+           <div class="form-group">
+             <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Expiration Date" name="edate" required>
+           </div>
             <hr>
             <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
             <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>

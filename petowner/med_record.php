@@ -140,9 +140,7 @@ if ($Aa=='User'){
 
             <div class="card shadow mb-4 col-xs-12 col-md-15 border-bottom-primary">
                 <div class="card-header py-3">
-                        <h4 class="m-2 font-weight-bold text-primary">Medical History
-                            <a  href="#" data-toggle="modal" data-target="#aModal" type="button" style="float:right" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"> <i class="fas fa-fw fa-plus"></i> </a>
-                        </h4> 
+                        <h4 class="m-2 font-weight-bold text-primary">Medical History</h4> 
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -221,102 +219,3 @@ if ($Aa=='User'){
 <?php
 include'../includes/footer.php';
 ?>
-
-<div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          
-
-          <h5 class="modal-title" id="exampleModalLabel" >Medical Information</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        
-        <div class="modal-body">
-          <form role="form" method="post" action="med_rec_transac.php?action=add">
-            <div class="form-group">
-              <label> Pet Name </label>
-              
-              <?php
-                
-                $query ='SELECT PET_ID, PET_NAME FROM pets';
-                $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                if($result->num_rows> 0){
-                  $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
-                }
-            
-            ?>
-            <select class="form-control" name="petname" required >
-              <option>  </option>
-                <?php 
-                  foreach ($options as $option){
-                ?>
-                <option>
-                   <?php echo $option['PET_ID']; echo " - "; echo  $option['PET_NAME']; ?> 
-                </option>
-                <?php 
-              }
-                 ?>
-          </select>
-        </div>
-        
-           <div class="form-group">
-            <label> Pet Allergy </label>
-             <input class="form-control" name="pet_allergy" required>
-           </div>
-           <div class="form-group">
-           <label> Consultation Date </label>
-             <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Consultation Date" name="consult_date" required>
-           </div>
-
-            <div class="form-group">
-            <label> Medical Condition </label>
-              <textarea type="text"class="form-control" placeholder="Medical Condition" name="med_condition" required></textarea>
-            </div>
-           <div class="form-group">
-           <label> Treatment </label>
-              <textarea type="text"class="form-control" placeholder="Treatment" name="treatment" required></textarea>
-            </div>
-            <div class="form-group">
-           <label> Recovery Date </label>
-             <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Recovery Date" name="recovery_date" >
-           </div>
-
-            <div class="form-group">
-              <label> Veterinarian </label>
-              
-              <?php
-                
-                $query ='SELECT e.EMPLOYEE_ID, CONCAT(e.FIRST_NAME," ", e.LAST_NAME) AS EMPLOYEE_NAME, r.JOB_ID FROM employee e JOIN role r on e.JOB_ID = r.JOB_ID WHERE e.JOB_ID = "3"';
-                $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                if($result->num_rows> 0){
-                  $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
-                }
-            
-            ?>
-            <select class="form-control" placeholder="Choose Veterinarian" name="veterinarian" required >
-              <option>  </option>
-                <?php 
-                  foreach ($options as $option){
-                ?>
-                <option>
-                   <?php echo $option['EMPLOYEE_ID']; echo " - Dr."; echo  $option['EMPLOYEE_NAME']; ?> 
-                </option>
-                <?php 
-              }
-                 ?>
-          </select>
-        </div>
-
-           
-            <hr>
-              <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
-              <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>      
-          </form>  
-        </div>
-      </div>
-    </div>
-  </div>
