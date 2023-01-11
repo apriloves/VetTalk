@@ -16,6 +16,52 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
+             <!-- Nav Item - Alerts -->
+             <?php
+              $sql_get = mysqli_query($db, "SELECT * FROM notif_user WHERE cust_id={$_SESSION['CUST_ID']} AND status=0");
+              $count = mysqli_num_rows($sql_get);
+
+            ?>
+                      <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter"> <?php echo $count ?></span>
+                            </a>
+
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Unread Notifications
+                                </h6>
+                                <?php
+                                  $sql_get1 = mysqli_query($db, "SELECT * FROM notif_user WHERE cust_id={$_SESSION['CUST_ID']} AND status=0 ORDER BY date_created DESC");
+                                  if(mysqli_num_rows($sql_get1) > 0)
+                                  {
+                                    while($result = mysqli_fetch_assoc($sql_get1))
+                                    {
+                                      echo '<a class="dropdown-item d-flex align-items-center" href="read_msg.php?id='.$result['id'].'"> 
+                                      <div>
+                                        <div class="small text-gray-500">'.$result['date_created'].'</div>
+                                        <div class="font-weight-bold">'.$result['name'].'</div>
+                                        <span class="">'.$result['message'].'</span>
+                                      </div>
+                                        </a>';
+                                    }
+                                  }
+                                  else
+                                  {
+                                    echo '<a class="dropdown-item text-danger font-weight-bold" href="#"> No Message/s</a>';
+                                  }
+                                ?>               
+                                <a class="dropdown-item text-center small text-gray-500" href="notifs_all.php">Show All Notifications </a>
+                            </div>
+                        </li>
+
+
+
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
