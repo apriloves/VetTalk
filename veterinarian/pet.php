@@ -99,8 +99,8 @@ if ($Aa=='User'){
                                 </a>
                               </li>
                               <li>
-                                <a type="button" class="btn btn-info bg-gradient-info btn-block" style="border-radius: 0px;" href="documents.php?action=edit & id='.$row['PET_ID']. '">
-                                <i class="fas fa-fw fa-edit"></i> Laboratory Result
+                                <a type="button" class="btn btn-info bg-gradient-info btn-block" style="border-radius: 0px;" href="documents_pet.php?action=edit & id='.$row['PET_ID']. '">
+                                <i class="fas fa-fw fa-edit"></i> Laboratory Record
                                 </a>
                               </li>
                             </ul>

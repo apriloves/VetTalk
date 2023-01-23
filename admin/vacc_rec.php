@@ -38,8 +38,8 @@ if ($Aa=='User'){
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
                     <thead>
                         <tr>
-                            <th>Vaccine</th>
                             <th>Vaccination Date</th>
+                            <th>Vaccine</th>
                             <th>Veterinarian</th>
                         </tr>
                     </thead>
@@ -51,8 +51,8 @@ if ($Aa=='User'){
                             while ($row = mysqli_fetch_assoc($result)) {
                                                         
                                 echo '<tr>';
-                                echo '<td>'. $row['VACC_NAME'].'</td>';
                                 echo '<td>'. $row['VACC_DATE'].'</td>';
+                                echo '<td>'. $row['VACC_NAME'].'</td>';
                                 echo '<td>'. $row['FIRST_NAME'].'</td>';
                                 echo '</tr> ';
                             }

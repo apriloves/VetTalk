@@ -51,8 +51,8 @@
                     <input type="button" button class="btn btn-primary btn-user btn-block" onclick="window.location.href='login2.php'" value="Pet Owner" >
 
                     <input type="button" button class="btn btn-primary btn-user btn-block" onclick="window.location.href='login1.php'" value="Faculty" >
-                    <hr>
-                  <!-- <div class="text-center">
+                    <!--<hr></br>
+                  <div class="text-center">
                     <a class="small" href="register.php">Create an Account!</a>
                   </div> -->
                 </form>

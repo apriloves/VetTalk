@@ -47,7 +47,7 @@
                     <th>Pet</th>
                     <th>Type</th>
                     <th>Purpose</th>
-                    <th>Action</th>
+                    <th>Additional Notes</th>
                 </tr>
             </thead>
                 <tbody>
@@ -101,12 +101,8 @@
                             ?></td>
                         <td><?php echo $row['type']; ?></td>
                         <td><?php echo $row['reason']; ?></td>
-                        <td>
-                            <form action="bookings_edit.php" method="post">
-                                <input type="hidden" name="edit_id" value="<?php echo $row['id'];?>" >
-                                <button type="submit" name="edit_btn" class="btn btn-success"> Details </button>
-                            </form>
-                        </td>
+                        <td><?php echo $row['notes']; ?></td>
+                        
                     </tr>
                     <?php
                             }

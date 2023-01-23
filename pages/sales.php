@@ -19,16 +19,16 @@ include'../includes/sidebar.php';
 <?php
   }           
 }
-
-?>
-
+            ?>
+            
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <center><h4 class="m-2 font-weight-bold text-primary">Daily Sales Report</h4>
-              
+              <h4 class="m-2 font-weight-bold text-primary">Sales Report</h4>
             </div>
             <div class="card-body">
+              <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -36,54 +36,47 @@ include'../includes/sidebar.php';
                     </div>
                     
                 </div>
+                <strong>Daily Sales:</strong>
+                <input id="dailyDate" type="date" class="btn btn-default btn-sm" placeholder=""
+                value="<?= date('Y-m-d'); ?>">
 
                <thead>
                    <tr>
-                     <th>Date</th>
-                     <th>Transaction #</th>
-                     <th>Prouct Name</th> 
-                     <th>No. of Items</th>  
+                     <th>Product Code</th>
+                     <th>Name</th>                    
+                     <th>Category</th>
                      <th>Price</th>
-                     <th>Total Amount</th>
                    </tr>
                </thead>
           <tbody>
 
 <?php                  
-    $query = 'SELECT T.CUST_ID, TD.PRODUCTS, T.NUMOFITEMS, TD.QTY, TD.PRICE, T.GRANDTOTAL, T.DATE, T.TRANS_D_ID
-              FROM transaction_details TD
-              JOIN transaction T ON TD.`TRANS_D_ID`=T.`TRANS_D_ID`
-              GROUP BY TD.TRANS_D_ID';
+    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, CNAME, PRICE FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID GROUP BY PRODUCT_CODE';
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
       
             while ($row = mysqli_fetch_assoc($result)) {
                                  
                 echo '<tr>';
-                echo '<td>'. $row['DATE'].'</td>';
-                echo '<td>'. $row['TRANS_D_ID'].'</td>';
-                echo '<td>'. $row['PRODUCTS'].'</td>';
-                echo '<td>'. $row['NUMOFITEMS'].'</td>';
+                echo '<td>'. $row['PRODUCT_CODE'].'</td>';
+                echo '<td>'. $row['NAME'].'</td>';
+                echo '<td>'. $row['CNAME'].'</td>';
                 echo '<td>'. $row['PRICE'].'</td>';
-                echo '<td>'. $row['GRANDTOTAL'].'</td>';
             }
-
-?>
-
-        <?php
-        $results = mysqli_query($db, "SELECT sum(GRANDTOTAL) FROM transaction") or die(mysqli_error());
-          while($rows = mysqli_fetch_array($results)){?>
-          Total Sales: <?php echo $rows['sum(GRANDTOTAL)']; ?>
-        <?php
-          }
-        ?>
+?> 
                                     
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                  
+                  </div>
 
-                  <a href="" onclick="window.print()" class="btn btn-primary" style="float:left"><i class="icon-print icon-large"></i> Print</a>
+                <div id="printBut" class="pull-right">
+                <button type="button" class="btn btn-success btn-sm">
+                    PRINT
+                    <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                </button>
+                </div>
+
 <?php
 include'../includes/footer.php';
 ?>

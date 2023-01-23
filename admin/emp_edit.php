@@ -21,7 +21,7 @@ include'includes/sidebar.php';
 }
 
 // JOB SELECT OPTION TAB
-$sql = "SELECT DISTINCT JOB_TITLE, JOB_ID FROM job";
+$sql = "SELECT DISTINCT JOB_TITLE, JOB_ID FROM role";
 $result = mysqli_query($db, $sql) or die ("Bad SQL: $sql");
 
 $opt = "<select class='form-control' name='jobs' required>
@@ -32,7 +32,7 @@ $opt = "<select class='form-control' name='jobs' required>
 
 $opt .= "</select>";
 
-        $query = 'SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, j.JOB_TITLE, HIRED_DATE, l.PROVINCE, l.CITY FROM employee e join location l on l.LOCATION_ID=e.LOCATION_ID join job j on j.JOB_ID=e.JOB_ID WHERE EMPLOYEE_ID ='.$_GET['id'];
+        $query = 'SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, j.JOB_TITLE, HIRED_DATE, l.PROVINCE, l.CITY FROM employee e join location l on l.LOCATION_ID=e.LOCATION_ID join role j on j.JOB_ID=e.JOB_ID WHERE EMPLOYEE_ID ='.$_GET['id'];
         $result = mysqli_query($db, $query) or die(mysqli_error($db));
           while($row = mysqli_fetch_array($result))
           {   

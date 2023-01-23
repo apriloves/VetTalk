@@ -20,19 +20,18 @@
         <div class="modal-body">
             <div class="form group">
                 <label>User Id</label>
-                <input type="text" name="user_id" class="form-control" placeholder="Enter ID">
+                <input type="text" name="user_id" class="form-control" placeholder="Enter Pet Owner ID">
             </div>
 
             <div class="form group">
                 <label>User Role</label>
                 <select type="text" name="user_role" class="form-control">
                     <option value=""></option>
-                    <option value="patient">Patient</option>
-                    <option value="admin">Admin</option>
-                    <option value="doctor">Veterinarian</option>
-                    <option value="staff">Veterinarian Staff</option>
-                    <option value="laboratory">Laboratory</option>
-                    <option value="patient">Patient</option>
+                    <option value="1">Admin</option>
+                    <option value="3">Veterinarian</option>
+                    <option value="2">Veterinarian Staff</option>
+                    <option value="5">Laboratory</option>
+                    <option value="4">Patient</option>
                 </select>
             </div>
 

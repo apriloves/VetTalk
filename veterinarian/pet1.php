@@ -94,13 +94,13 @@ if ($Aa=='User'){
                                 </a>
                               </li>
                                 <li>
-                                <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;" href="vacc_rec.php?action=edit & id='.$row['CUST_ID']. '">
+                                <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;" href="vacc_rec.php?action=edit & id='.$row['PET_ID']. '">
                                 <i class="fas fa-fw fa-edit"></i> Vaccine Chart
                                 </a>
                               </li>
                               <li>
-                                <a type="button" class="btn btn-info bg-gradient-info btn-block" style="border-radius: 0px;" href="cust_edit.php?action=edit & id='.$row['CUST_ID']. '">
-                                <i class="fas fa-fw fa-edit"></i> Deworming
+                                <a type="button" class="btn btn-info bg-gradient-info btn-block" style="border-radius: 0px;" href="documents_pet.php?action=edit & id='.$row['PET_ID']. '">
+                                <i class="fas fa-fw fa-edit"></i> Laboratory Record
                                 </a>
                               </li>
                             </ul>

@@ -57,17 +57,14 @@ if ($Aa=='User'){
                                 ?> 
 
                             </tbody>
-                        </table>
+                        </table></br>
+                        <a  href="index.php" type="button" style="float:right" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"> <i class="fas fa-flip-horizontal fa-fw fa-share"></i> Back</a>
                     </div>
                 </div>
 
             </div>
         
-                <div>
-                    <a href="pet.php" type="button" class="btn btn-primary bg-gradient-primary btn-block">
-                      <i class="fas fa-flip-horizontal fa-fw fa-share"></i> Back 
-                    </a>
-                </div>
+              
     
 
 <?php

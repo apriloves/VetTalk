@@ -7,7 +7,6 @@ if (isset($_POST['btnlogin'])) {
 
   $users = trim($_POST['user']);
   $upass = trim($_POST['password']);
-  $h_upass = sha1($upass);
 if ($upass == ''){
      ?>    <script type="text/javascript">
                 alert("Password is missing!");
@@ -15,11 +14,18 @@ if ($upass == ''){
                 </script>
         <?php
 }else{
-//create some sql statement             
-        $sql = "SELECT ID,u.CUST_ID,e.FIRST_NAME,e.LAST_NAME,e.GENDER,e.BIRTHDATE,e.ADDRESS,e.PHONE_NUMBER,e.EMAIL_ADD,p.PET_NAME,p.PET_GENDER,p.PET_CATEG,p.PET_COLOR,p.BREED,p.PET_AGE,p.PET_WEIGHT,t.TYPE
+//create some sql statement         
+
+       // $sql = "SELECT ID,u.CUST_ID,e.FIRST_NAME,e.LAST_NAME,e.GENDER,e.BIRTHDATE,e.ADDRESS,e.PHONE_NUMBER,e.EMAIL_ADD,p.PET_NAME,p.PET_GENDER,p.PET_CATEG,p.PET_COLOR,p.BREED,p.PET_AGE,p.PET_WEIGHT,t.TYPE
+                //FROM  `users_owner` u
+                //join `pet_owner` e on e.CUST_ID=u.CUST_ID
+                //JOIN `pets` p ON e.CUST_ID=p.CUST_ID
+                //join `type` t ON t.TYPE_ID=u.TYPE_ID
+                //WHERE  `USERNAME` ='" . $users . "' AND  `PASSWORD` =  '" . $upass . "'";
+
+        $sql = "SELECT ID,u.CUST_ID,e.FIRST_NAME,e.LAST_NAME,e.GENDER,e.BIRTHDATE,e.ADDRESS,e.PHONE_NUMBER,e.EMAIL_ADD,t.TYPE
         FROM  `users_owner` u
         join `pet_owner` e on e.CUST_ID=u.CUST_ID
-        JOIN `pets` p ON e.CUST_ID=p.CUST_ID
         join `type` t ON t.TYPE_ID=u.TYPE_ID
         WHERE  `USERNAME` ='" . $users . "' AND  `PASSWORD` =  '" . $upass . "'";
         $result = $db->query($sql);
@@ -41,13 +47,13 @@ if ($upass == ''){
                 $_SESSION['ADDRESS']  =  $found_user['ADDRESS'];
                 $_SESSION['PHONE_NUMBER']  =  $found_user['PHONE_NUMBER'];
                 $_SESSION['EMAIL_ADD']  =  $found_user['EMAIL_ADD'];
-                $_SESSION['PET_NAME']  =  $found_user['PET_NAME'];
-                $_SESSION['PET_GENDER']  =  $found_user['PET_GENDER']; 
-                $_SESSION['PET_CATEG']  =  $found_user['PET_CATEG'];
-                $_SESSION['PET_COLOR']  =  $found_user['PET_COLOR'];  
-                $_SESSION['BREED']  =  $found_user['BREED']; 
-                $_SESSION['PET_AGE']  =  $found_user['PET_AGE']; 
-                $_SESSION['PET_WEIGHT']  =  $found_user['PET_WEIGHT']; 
+                //$_SESSION['PET_NAME']  =  $found_user['PET_NAME'];
+                //$_SESSION['PET_GENDER']  =  $found_user['PET_GENDER']; 
+                //$_SESSION['PET_CATEG']  =  $found_user['PET_CATEG'];
+                //$_SESSION['PET_COLOR']  =  $found_user['PET_COLOR'];  
+                //$_SESSION['BREED']  =  $found_user['BREED']; 
+                //$_SESSION['PET_AGE']  =  $found_user['PET_AGE']; 
+                //$_SESSION['PET_WEIGHT']  =  $found_user['PET_WEIGHT']; 
                 $_SESSION['TYPE']  =  $found_user['TYPE'];
                 $AAA = $_SESSION['MEMBER_ID'];
 

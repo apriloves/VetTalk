@@ -180,11 +180,7 @@ if ($Aa=='User'){
                                                             </a>
 
                                                             <ul class="dropdown-menu text-center" role="menu">
-                                                                <li>
-                                                                <a type="button" class="btn btn-primary bg-gradient-primary btn-block" style="border-radius: 0px;"   href="pet_searchfrm.php?action=edit & id='.$row['PET_ID']. '">
-                                                                    <i class="fas fa-fw fa-info-circle"></i> Details
-                                                                    </a>
-                                                                </li>
+                                                                
                                                                 <li>
                                                                 <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;"   href="med_rec_edit.php?action=edit & id='.$row['MedRec_ID']. '">
                                                                     <i class="fas fa-fw fa-edit"></i> Edit

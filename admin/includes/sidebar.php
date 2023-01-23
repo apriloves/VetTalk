@@ -93,7 +93,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="pet.php" data-toggle="collapse" data-target="#collapsePets"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
+          <i class="fas fa-fw fa-paw"></i>
           <span>Pets</span>
         </a>
         
@@ -108,44 +108,38 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-calendar"></i>
+        <a class="nav-link" href="bookings.php">
+          <i class="fas fa-fw fa-list"></i>
           <span>Appointments</span></a>
       </li>
     
       <li class="nav-item">
         <a class="nav-link" href="employee.php">
-          <i class="fas fa-fw fa-user"></i>
+          <i class="fas fa-fw fa-address-book"></i>
           <span>Employee</span></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="inventory.php">
-          <i class="fas fa-fw fa-archive"></i>
-          <span>Inventory</span></a>
-      </li>
-      
-      <li class="nav-item">
         <a class="nav-link" href="transaction.php">
-          <i class="fas fa-fw fa-history"></i>
+          <i class="fas fa-fw fa-retweet"></i>
           <span>Transaction History</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="sales.php">
           <i class="fas fa-fw fa-chart-line"></i>
-          <span>Sales</span></a>
+          <span>Sales Report</span></a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="supplier.php">
-          <i class="fas fa-fw fa-cogs"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Suppliers</span></a>
       </li>
      
       <li class="nav-item">
         <a class="nav-link" href="user.php">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-cogs"></i>
           <span>Accounts</span></a>
       </li>
     

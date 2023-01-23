@@ -109,7 +109,7 @@
       
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-calendar"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Appointments</span></a>
       </li>
 
@@ -148,16 +148,10 @@
           <i class="fas fa-fw fa-archive"></i>
           <span>Inventory</span></a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="sales.php">
-          <i class="fas fa-fw fa-chart-line"></i>
-          <span>Sales</span></a>
-      </li>
       
       <li class="nav-item">
         <a class="nav-link" href="transaction.php">
-          <i class="fas fa-fw fa-history"></i>
+          <i class="fas fa-fw fa-retweet"></i>
           <span>Transaction History</span></a>
       </li>
       

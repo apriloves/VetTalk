@@ -16,8 +16,10 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-             <!-- Nav Item - Alerts -->
-             <?php
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - Alerts -->
+            <?php
               $sql_get = mysqli_query($db, "SELECT * FROM notif_user WHERE cust_id={$_SESSION['CUST_ID']} AND status=0");
               $count = mysqli_num_rows($sql_get);
 
@@ -59,10 +61,6 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="notifs_all.php">Show All Notifications </a>
                             </div>
                         </li>
-
-
-
-            <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">

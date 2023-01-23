@@ -1,7 +1,7 @@
 <?php
 include'../includes/connection.php';
 ?>
-          <!-- Page Content eto yun-->
+          <!-- Page Content -->
           <div class="col-lg-12">
             <?php
               $pc = $_POST['prodcode'];

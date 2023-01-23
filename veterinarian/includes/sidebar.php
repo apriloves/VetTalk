@@ -93,7 +93,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="pet.php" data-toggle="collapse" data-target="#collapsePets"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
+          <i class="fas fa-fw fa-paw"></i>
           <span>Pets</span>
         </a>
         
@@ -106,27 +106,17 @@
           </div>
         </div>
       </li>
-      
+
       <li class="nav-item">
-        <a class="nav-link collapsed" href="vet_calendar.php" data-toggle="collapse" data-target="#collapseVetAppointment"
-          aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-calendar"></i>
-          <span>Vet Appointments</span>
-        </a>
-        
-        <div id="collapseVetAppointment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="vet_calendar.php">View Appointments </a>
-            <a class="collapse-item" href="bookings_approved.php">Approved Appointment </a>
-            <a class="collapse-item" href="bookings_denied.php">Cancelled Appointment </a>
-          </div>
-        </div>
+        <a class="nav-link" href="vet_calendar.php">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Vet Appointments</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="lab_calendar.php" data-toggle="collapse" data-target="#collapseLabAppointment"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-calendar"></i>
+          <i class="fas fa-fw fa-hospital"></i>
           <span>Lab Appointments</span>
         </a>
         
@@ -141,7 +131,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="documents.php">
-          <i class="fas fa-fw fa-home"></i>
+          <i class="fas fa-fw fa-file"></i>
           <span>Laboratory Result Files</span></a>
       </li>
 

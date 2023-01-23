@@ -2,6 +2,24 @@
     include'includes/connection.php';
     include'includes/sidebar.php';
 
+    $query = 'SELECT ID, t.TYPE
+                          FROM users u
+                          JOIN type t ON t.TYPE_ID=u.TYPE_ID WHERE ID = '.$_SESSION['CUST_ID'].'';
+                $result = mysqli_query($db, $query) or die (mysqli_error($db));
+      
+                while ($row = mysqli_fetch_assoc($result)) {
+                          $Aa = $row['TYPE'];
+                   
+                    if ($Aa=='User'){
+           
+             ?>    <script type="text/javascript">
+                      //then it will be redirected
+                      alert("Restricted Page! You will be redirected to POS");
+                      window.location = "pos.php";
+                  </script>
+             <?php   } 
+                }
+
     if(isset($_GET['date']))
     {
         $date = $_GET['date'];
@@ -35,6 +53,9 @@
         $notes = $_POST['notes'];
         $timeslot = $_POST['timeslot'];
 
+        $message = "You have a new pending Veterinary Appointment.";
+        $time = date('Y-m-d', strtotime($_POST['date']));
+
         $query = $db->prepare('SELECT * FROM bookings WHERE date = ? AND timeslot= ? AND status NOT IN ("denied","cancelled")');
         //SELECT * FROM bookings WHERE date = "2022-11-30" AND timeslot="14:00PM-15:00PM" AND status NOT IN ("denied" ,"cancelled");
         $query->bind_param('ss', $date,$timeslot);
@@ -49,6 +70,35 @@
                 //save to db
                 $query = "INSERT INTO bookings (owner_code,pet_code,type,reason,notes,date,timeslot) VALUES ('$owner_code','$pet_code','$type','$reason','$notes','$date','$timeslot')";
                 $query_run = mysqli_query($db,$query);
+
+                if($query_run)
+                {
+                    //query para ipasok sa notif_emp, basta reference mo sa emp_id yung id ni vet
+                    $query_run2 = mysqli_query($db,"INSERT INTO notif_emp(emp_id,name,message,time) VALUES('7','Vet Appointment','$message','$date')");
+
+                    
+                    if($query_run2)
+                    {
+                        // echo "saved";
+                        $_SESSION['success'] = "updated";
+                        echo "<script>window.location.href='calendar.php'</script>";
+                
+                    }
+                    else
+                    {
+
+                        $_SESSION['success'] = "notif failed";
+                        echo "<script>window.location.href='calendar.php'</script>";
+
+                    }
+                }
+        
+                else
+                {
+                    $_SESSION['status'] = "not updated";
+                    echo "<script>window.location.href='calendar.php'</script>";
+
+                }
 
                 $msg = "<div class='alert alert-success'>Booking Success </div>";
                 $bookings[]=$timeslot;
@@ -143,7 +193,7 @@
                                     $query_run = mysqli_query($db,$query);
                                     $row = mysqli_fetch_array($query_run);
                                     $pet_row = $row['CUST_ID']; ?>
-                                    <input id="owners" type="text" readonly name="owner_code" value="<?php echo $row['FIRST_NAME']?>" class="form-control" placeholder=" ">
+                                    <input id="owners" type="text" readonly name="owner_code" value="<?php echo $row['CUST_ID']?>" class="form-control" placeholder=" ">
                         </div>
                 
 

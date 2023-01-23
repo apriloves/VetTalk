@@ -18,6 +18,6 @@ include('includes/connection.php');
 							
 ?>	
 	<script type="text/javascript">
-			alert("You've Update Pet Owner Successfully.");
+			alert("You've Update Pet Successfully.");
 			window.location = "pet.php";
 		</script>

@@ -19,7 +19,7 @@ include'includes/sidebar.php';
 <?php
   }           
 }
-  $query = 'SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME,GENDER, EMAIL, PHONE_NUMBER, j.JOB_TITLE, HIRED_DATE, l.PROVINCE, l.CITY FROM employee e join location l on e.LOCATION_ID = l.LOCATION_ID join job j on j.JOB_ID=e.JOB_ID WHERE e.EMPLOYEE_ID ='.$_GET['id'];
+  $query = 'SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME,GENDER, EMAIL, PHONE_NUMBER, j.JOB_TITLE, HIRED_DATE, l.PROVINCE, l.CITY FROM employee e join location l on e.LOCATION_ID = l.LOCATION_ID join role j on j.JOB_ID=e.JOB_ID WHERE e.EMPLOYEE_ID ='.$_GET['id'];
   $result = mysqli_query($db, $query) or die(mysqli_error($db));
     while($row = mysqli_fetch_array($result))
     {   
@@ -40,7 +40,7 @@ include'includes/sidebar.php';
             <div class="card-header py-3">
               <h4 class="m-2 font-weight-bold text-primary">Employees' Detail</h4>
             </div>
-            <a href="employee.php" type="button" class="btn btn-primary bg-gradient-primary btn-block"> <i class="fas fa-flip-horizontal fa-fw fa-share"></i> Back </a>
+            
             <div class="card-body">
           
 
@@ -129,8 +129,9 @@ include'includes/sidebar.php';
                         </h5>
                       </div>
                     </div>
-
+                    
                       </div>
+                      <a href="employee.php" type="button" class="btn btn-primary bg-gradient-primary btn-block"> <i class="fas fa-flip-horizontal fa-fw fa-share"></i> Back </a>
                     </div>
 
           </div>

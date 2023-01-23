@@ -50,13 +50,14 @@ if ($Aa=='User'){
             </thead>
             <tbody>
   <?php
-           $query = 'SELECT *, CONCAT(P.FIRST_NAME," ", P.LAST_NAME) AS  FIRST_NAME, tt.PET_NAME, CONCAT(e.FIRST_NAME," ", e.LAST_NAME) AS  EMP_NAME
+           $query = 'SELECT *, CONCAT(P.FIRST_NAME," ", P.LAST_NAME) AS  FIRST_NAME, u.ID, tt.PET_NAME, CONCAT(e.FIRST_NAME," ", e.LAST_NAME) AS  EMP_NAME
            FROM lab_rec R
            JOIN lab_result RR ON R.`result_id`=RR.`result_id`
            JOIN lab_bookings T ON R.`LAB_ID`=T.`LAB_ID`
            JOIN pet_owner P ON T.`CUST_ID`=P.`CUST_ID`
            JOIN pets tt ON tt.`PET_ID`=T.`PET_ID`
-           JOIN employee e ON e.`EMPLOYEE_ID`=T.`EMPLOYEE_ID`
+           JOIN users u ON u.`ID`=T.`ID`
+           JOIN employee e ON e.`EMPLOYEE_ID`=u.`EMPLOYEE_ID`
            WHERE R.LAB_ID ='.$_GET['id'];
             $result = mysqli_query($db, $query) or die (mysqli_error($db));
             while ($row = mysqli_fetch_assoc($result)) {
@@ -68,7 +69,7 @@ if ($Aa=='User'){
                 <td><?php echo $row['PET_NAME'] ?></td>
                 <td><?php echo $row['lab_test'] ?></td>
                 <td><?php echo $row['EMP_NAME'] ?></td>
-                <td> <a href="lab_files/<?php echo $row['result_file'] ?>" target="_blank" style="align:center">View Result</a> </td>
+                <td> <a href="../lab_files/<?php echo $row['result_file'] ?>" target="_blank" style="align:center">View Result</a> </td>
                 </tr>
                 <?php
  }

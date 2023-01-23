@@ -42,13 +42,14 @@ if ($Aa=='User'){
                       </tr>
                   </thead>
                   <tbody>
-                    <?php                  
-                      $query = 'SELECT *, CONCAT(P.FIRST_NAME," ", P.LAST_NAME) AS  FIRST_NAME, tt.PET_NAME, CONCAT(e.FIRST_NAME," ", e.LAST_NAME) AS  EMP_NAME, tt.PET_GENDER,tt.BREED
-                      FROM lab_bookings T
-                      JOIN pet_owner P ON T.`CUST_ID`=P.`CUST_ID`
-                      JOIN pets tt ON T.`PET_ID`=tt.`PET_ID`
-                      JOIN employee e ON e.`EMPLOYEE_ID`=T.`EMPLOYEE_ID`
-                      WHERE status = "Approved" AND tt.PET_ID = T.`PET_ID`';
+                    <?php     
+                    $query = 'SELECT *, CONCAT(P.FIRST_NAME," ", P.LAST_NAME) AS  FIRST_NAME, tt.PET_NAME, u.ID, CONCAT(e.FIRST_NAME," ", e.LAST_NAME) AS  EMP_NAME
+                    FROM lab_bookings T
+                    JOIN pet_owner P ON T.`CUST_ID`=P.`CUST_ID`
+                    JOIN pets tt ON tt.`PET_ID`=T.`PET_ID`
+                    JOIN users u ON u.`ID`=T.`ID`
+                    JOIN employee e ON e.`EMPLOYEE_ID`=u.`EMPLOYEE_ID`
+                    WHERE status = "Approved" AND tt.PET_ID = T.`PET_ID`';
                       $result = mysqli_query($db, $query) or die (mysqli_error($db));
         
                       while ($row = mysqli_fetch_assoc($result)) {

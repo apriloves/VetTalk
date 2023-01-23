@@ -1,5 +1,5 @@
 <?php 
-require_once('../pages/sales.php');
+require_once('sales.php');
 
 $date = $_GET['date'];
 $weeklySales = $sales->weekly_sales($date);
@@ -26,7 +26,7 @@ $weeklySales = $sales->weekly_sales($date);
   <body>
     
  <center>
-    <h1>Weekly Sales Report</h1>
+    <h1>Sales Report</h1>
     <h2><?= $date; ?></h2>
  </center>
 <br />

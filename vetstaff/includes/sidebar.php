@@ -94,7 +94,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="pet.php" data-toggle="collapse" data-target="#collapsePets"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
+          <i class="fas fa-fw fa-paw"></i>
           <span>Pets</span>
         </a>
         
@@ -111,7 +111,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="calendar.php" data-toggle="collapse" data-target="#collapseAppointment"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-calendar"></i>
+          <i class="fas fa-fw fa-list"></i>
           <span>Appointments</span>
         </a>
         
@@ -136,7 +136,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="pos.php" data-toggle="collapse" data-target="#collapsePurchase"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
+          <i class="fas fa-fw fa-cart-plus"></i>
           <span>POS</span>
         </a>
         
@@ -154,16 +154,10 @@
           <i class="fas fa-fw fa-archive"></i>
           <span>Inventory</span></a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="sales.php">
-          <i class="fas fa-fw fa-chart-line"></i>
-          <span>Sales</span></a>
-      </li>
       
       <li class="nav-item">
         <a class="nav-link" href="transaction.php">
-          <i class="fas fa-fw fa-history"></i>
+          <i class="fas fa-fw fa-retweet"></i>
           <span>Transaction History</span></a>
       </li>
 

@@ -44,7 +44,7 @@
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome to VetTalk!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Pet Owner Login</h1>
                   </div>
                   <form class="user" role="form" action="processlogin_owner.php" method="post">
                     <div class="form-group">
@@ -60,10 +60,10 @@
                       </div>
                     </div>
                     <button class="btn btn-primary btn-user btn-block" type="submit" name="btnlogin">Login</button>
-                    <hr>
-                  <!-- <div class="text-center">
+                    <hr><br>
+                  <div class="text-center">
                     <a class="small" href="register.php">Create an Account!</a>
-                  </div> -->
+                  </div> 
                 </form>
                 </div>
               </div>

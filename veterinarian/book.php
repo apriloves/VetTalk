@@ -2,40 +2,24 @@
     include'includes/connection.php';
     include'includes/sidebar.php';
 
-    $sql = "SELECT DISTINCT e.EMPLOYEE_ID, CONCAT(e.FIRST_NAME,' ', e.LAST_NAME) AS FIRST_NAME, r.JOB_ID FROM employee e JOIN role r ON e.JOB_ID = r.JOB_ID WHERE e.JOB_ID ='3'";
+    $sql = "SELECT u.ID, e.EMPLOYEE_ID, CONCAT(e.FIRST_NAME,' ', e.LAST_NAME) AS FIRST_NAME, r.JOB_ID FROM users u 
+    JOIN employee e ON u.EMPLOYEE_ID = e.EMPLOYEE_ID
+    JOIN role r ON e.JOB_ID = r.JOB_ID  
+    WHERE e.JOB_ID ='3'";
     $result = mysqli_query($db, $sql) or die ("Bad SQL: $sql");
-    
+
     $aaa = "<select class='form-control' name='vet' required>
-            <option disabled selected hidden>Select Veterinarian</option>";
-      while ($row = mysqli_fetch_assoc($result)) {
-        $aaa .= "<option value='".$row['EMPLOYEE_ID']."'>".$row['FIRST_NAME']."</option>";
-      }
+        <option disabled selected hidden>Select Veterinarian</option>";
+    while ($row = mysqli_fetch_assoc($result)) {
+    $aaa .= "<option value='".$row['ID']."'>".$row['FIRST_NAME']."</option>";
+    }
     
     $aaa .= "</select>";
-$query = 'SELECT ID, t.TYPE
-FROM users u
-JOIN type t ON t.TYPE_ID=u.TYPE_ID WHERE ID = '.$_SESSION['MEMBER_ID'].'';
-$result = mysqli_query($db, $query) or die (mysqli_error($db));
 
-while ($row = mysqli_fetch_assoc($result)) {
-    $Aa = $row['TYPE'];
-           
-if ($Aa=='User'){
 ?>
 
-
-<script type="text/javascript">
-//then it will be redirected
-alert("Restricted Page! You will be redirected to POS");
-window.location = "pos.php";
-</script>
-
-
-
-
 <?php
-}           
-}
+         
 
     if(isset($_GET['date']))
     {
@@ -68,6 +52,14 @@ window.location = "pos.php";
         $vet = $_POST['vet'];
         $timeslot = $_POST['timeslot'];
         $lab_test = $_POST['lab_test'];
+        $message = "Veterinary Clinic book an appointment. Check your pending appointments";
+
+        //$id = $_POST['id'];
+        //$status = $_POST['status'];
+        //$emp_id = $_POST['emp_id'];
+        //$name= $_POST['name'];
+        //$message = $_POST['message'];
+        $time = date('Y-m-d', strtotime($_POST['date']));
 
         $query = $db->prepare('SELECT * FROM lab_bookings WHERE date = ? AND timeslot= ? AND status NOT IN ("denied","cancelled")');
         $query->bind_param('ss', $date,$timeslot);
@@ -80,8 +72,37 @@ window.location = "pos.php";
                 $msg = "<div class='alert alert-danger'>Already Booked </div>";
             }else{
                 //save to db
-                $query = "INSERT INTO lab_bookings (CUST_ID,PET_ID,EMPLOYEE_ID,date,timeslot,lab_test,status) VALUES ('$owner_code','$pet_code','$vet','$date','$timeslot', '$lab_test','pending')";
+                $query = "INSERT INTO lab_bookings (CUST_ID,PET_ID,ID,date,timeslot,lab_test,status) VALUES ('$owner_code','$pet_code','$vet','$date','$timeslot', '$lab_test','pending')";
                 $query_run = mysqli_query($db,$query);
+
+                if($query_run)
+                {
+                    //query para ipasok sa notif_emp, basta reference mo sa emp_id yung id ni vet
+                    $query_run2 = mysqli_query($db,"INSERT INTO notif_emp(emp_id,name,message,time) VALUES('10','Veterinary Clinic','$message','$date')");
+
+                    
+                    if($query_run2)
+                    {
+                        // echo "saved";
+                        $_SESSION['success'] = "updated";
+                        echo "<script>window.location.href='lab_calendar.php'</script>";
+                
+                    }
+                    else
+                    {
+
+                        $_SESSION['success'] = "notif failed";
+                        echo "<script>window.location.href='lab_calendar.php'</script>";
+
+                    }
+                }
+        
+                else
+                {
+                    $_SESSION['status'] = "not updated";
+                    echo "<script>window.location.href='lab_calendar.php'</script>";
+
+                }
 
                 $msg = "<div class='alert alert-success'>Laboratory Booking Success </div>";
                 $bookings[]=$timeslot;

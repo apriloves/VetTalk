@@ -43,7 +43,7 @@ if ($Aa=='User'){
                      </thead>
                     <tbody>
                     <?php                  
-                        $query = 'SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, r.JOB_TITLE FROM employee e JOIN role r ON e.JOB_ID=r.JOB_ID';
+                        $query = 'SELECT e.EMPLOYEE_ID, e.FIRST_NAME, e.LAST_NAME, r.JOB_TITLE FROM employee e JOIN role r ON e.JOB_ID=r.JOB_ID WHERE NOT e.JOB_ID ="1"';
                         $result = mysqli_query($db, $query) or die (mysqli_error($db));
                         while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>';
@@ -78,3 +78,110 @@ if ($Aa=='User'){
 <?php
 include'../includes/footer.php';
 ?>
+
+<div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+
+          <h5 class="modal-title" id="exampleModalLabel" >Add Employee</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+
+                        <form role="form" method="post" action="emp_transac.php?action=add">
+                        
+                            <div class="form-group">
+                            <label> First Name </label>
+                              <input class="form-control" placeholder="First Name" name="firstname" required>
+                            </div>
+                            <div class="form-group">
+                            <label> Last Name </label>
+                              <input class="form-control" placeholder="Last Name" name="lastname" required>
+                            </div>
+                            <div class="form-group">
+                            <label> Email </label>
+                              <input class="form-control" placeholder="Email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                            <label> Phone Number </label>
+                              <input class="form-control" placeholder="Phone Number" name="phonenumber" required>
+                            </div>
+                            
+                            <div class="form-group">
+                          <label> Job Role </label>
+                          <?php
+                            $sql = 'SELECT DISTINCT JOB_TITLE, JOB_ID FROM role WHERE NOT JOB_ID = "1"';
+                            $result = mysqli_query($db, $sql) or die ("Bad SQL: $sql");
+
+                            if($result->num_rows> 0){
+                              $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                            }
+                        
+                        ?>
+                          <select class="form-control" name="job_name" required >
+                            <option>  </option>
+                              <?php 
+                                foreach ($options as $option){
+                              ?>
+                              <option>
+                                <?php echo  $option['JOB_TITLE']; ?> 
+                              </option>
+                              <?php 
+                            }
+                              ?>
+                        </select>
+                        </div>
+
+                            <div class="form-group">
+                            <label> Date Hired </label>
+                              <input type="date" id="FromDate" name="hireddate" value="yyyy-MM-dd" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                            <label> Province </label>
+                              <input class="form-control" id="province" placeholder="Province" name="province" required></select>
+                            </div>
+                            <div class="form-group">
+                            <label> City </label>
+                              <input class="form-control" id="city" placeholder="City" name="city" required></select>
+                            </div>
+                            <hr>
+                            <button type="submit" class="btn btn-success btn-block"><i class="fa fa-check fa-fw"></i>Save</button>
+                            <button type="reset" class="btn btn-danger btn-block"><i class="fa fa-times fa-fw"></i>Reset</button>
+                            
+                        </form>  
+                      </div>
+            </div>
+          </div></center>
+        
+
+
+          <!--script>  
+window.onload = function() {  
+
+  // ---------------
+  // basic usage
+  // ---------------
+  var $ = new City();
+  $.showProvinces("#province");
+  $.showCities("#city");
+
+  // ------------------
+  // additional methods 
+  // -------------------
+
+  // will return all provinces 
+  console.log($.getProvinces());
+  
+  // will return all cities 
+  console.log($.getAllCities());
+  
+  // will return all cities under specific province (e.g Batangas)
+  console.log($.getCities("Batangas")); 
+  
+}
+</script>

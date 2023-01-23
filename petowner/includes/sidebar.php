@@ -93,7 +93,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="pet.php" data-toggle="collapse" data-target="#collapsePets"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
+          <i class="fas fa-fw fa-paw"></i>
           <span>Pets</span>
         </a>
          
@@ -106,11 +106,17 @@
         </div>
         
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="vacc_sched.php">
+          <i class="fas fa-fw fa-list"></i>
+          <span>Vaccination Schedule</span></a>
+      </li>
       
       <li class="nav-item">
         <a class="nav-link collapsed" href="calendar.php" data-toggle="collapse" data-target="#collapseAppointment"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-calendar"></i>
+          <i class="fas fa-fw fa-clipboard"></i>
           <span>My Appointments</span>
         </a>
          
@@ -127,13 +133,13 @@
 
       <li class="nav-item">
         <a class="nav-link" href="transaction.php">
-          <i class="fas fa-fw fa-history"></i>
-          <span>Transaction History</span></a>
+          <i class="fas fa-fw fa-retweet"></i>
+          <span>Transaction</span></a>
       </li>
      
       <li class="nav-item">
         <a class="nav-link" href="documents.php">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-file"></i>
           <span>Documents / Files</span></a>
       </li>
       

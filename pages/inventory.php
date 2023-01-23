@@ -36,15 +36,13 @@ include'../includes/sidebar.php';
                      <th>On Hand</th>
                      <th>Category</th>
                      <th>Date Stock In</th>
-                     <th>Manufacture Date</th>
-                     <th>Expiration Date</th>
                      <th>Action</th>
                    </tr>
                </thead>
           <tbody>
 
 <?php                  
-    $query = 'SELECT p.PRODUCT_ID, p.PRODUCT_CODE, p.NAME, p.QTY_STOCK, p.ON_HAND, c.CNAME, p.DATE_STOCK_IN, p.MDATE, p.EDATE FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID GROUP BY p.PRODUCT_CODE';
+    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, COUNT(`QTY_STOCK`) AS "QTY_STOCK", COUNT(`ON_HAND`) AS "ON_HAND", CNAME, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID GROUP BY PRODUCT_CODE';
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
       
             while ($row = mysqli_fetch_assoc($result)) {
@@ -56,8 +54,6 @@ include'../includes/sidebar.php';
                 echo '<td>'. $row['ON_HAND'].'</td>';
                 echo '<td>'. $row['CNAME'].'</td>';
                 echo '<td>'. $row['DATE_STOCK_IN'].'</td>';
-                echo '<td>'. $row['MDATE'].'</td>';
-                echo '<td>'. $row['EDATE'].'</td>';
                       echo '<td align="right">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="inv_searchfrm.php?action=edit & id='.$row['PRODUCT_CODE'] . '"><i class="fas fa-fw fa-th-list"></i> View</a>
                           </div> </td>';

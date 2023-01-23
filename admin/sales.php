@@ -1,6 +1,6 @@
 <?php
-include'../includes/connection.php';
-include'../includes/sidebar.php';
+include'includes/connection.php';
+include'includes/sidebar.php';
   $query = 'SELECT ID, t.TYPE
             FROM users u
             JOIN type t ON t.TYPE_ID=u.TYPE_ID WHERE ID = '.$_SESSION['MEMBER_ID'].'';
@@ -24,8 +24,18 @@ include'../includes/sidebar.php';
 
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <center><h4 class="m-2 font-weight-bold text-primary">Daily Sales Report</h4>
+              <center><h4 class="m-2 font-weight-bold text-primary">Sales Report</h4>
               
+            </div>
+            <div class="card-header py-3" style="text-align:right">
+            <?php
+        
+              $results = mysqli_query($db, "SELECT sum(GRANDTOTAL) FROM transaction") or die(mysqli_error());
+                while($rows = mysqli_fetch_array($results)){?>
+                <h6 >Total Sales: </h6> <h4 class="m-2 text-primary"><strong> ₱ <?php echo  $rows['sum(GRANDTOTAL)']; ?></strong></h4>
+              <?php
+                }
+            ?>
             </div>
             <div class="card-body">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
@@ -69,13 +79,7 @@ include'../includes/sidebar.php';
 
 ?>
 
-        <?php
-        $results = mysqli_query($db, "SELECT sum(GRANDTOTAL) FROM transaction") or die(mysqli_error());
-          while($rows = mysqli_fetch_array($results)){?>
-          Total Sales: <?php echo $rows['sum(GRANDTOTAL)']; ?>
-        <?php
-          }
-        ?>
+        
                                     
                                 </tbody>
                             </table>
@@ -83,7 +87,7 @@ include'../includes/sidebar.php';
                     </div>
                   
 
-                  <a href="" onclick="window.print()" class="btn btn-primary" style="float:left"><i class="icon-print icon-large"></i> Print</a>
+                  <a href="" onclick="window.print()" class="btn btn-primary" style="float:right"><i class="icon-print icon-large"></i> Print</a>
 <?php
 include'../includes/footer.php';
 ?>
