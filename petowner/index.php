@@ -25,20 +25,21 @@ if ($Aa=='User'){
             ?>
           <div>  <h2><strong><p> Welcome, <?php echo  $_SESSION['TYPE'];?>! </p> </strong> </h2>
           </div>
-          <div class="row show-grid">
+          
+            <div class="row show-grid">
              
-            <!-- Customer ROW -->
+            <!-- Vet_App ROW -->
             <div class="col-md-3 ">
-            <!-- Customer record -->
+            <!-- Vet App record -->
             <div class="col-md-12 mb-3">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-0">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Clients</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Veterinary Appointment</div>
                       <div class="h6 mb-0 font-weight-bold text-gray-800">
                         <?php 
-                        $query = "SELECT COUNT(*) FROM pet_owner";
+                        $query = 'SELECT COUNT(*) FROM bookings WHERE owner_code = '.$_SESSION['CUST_ID'].'';
                         $result = mysqli_query($db, $query) or die(mysqli_error($db));
                         while ($row = mysqli_fetch_array($result)) {
                             echo "$row[0]";
@@ -47,7 +48,7 @@ if ($Aa=='User'){
                       </div>
                     </div>
                       <div class="col-auto">
-                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                       </div>
                   </div>
                 </div>
@@ -60,10 +61,10 @@ if ($Aa=='User'){
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-0">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Supplier</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Dogs</div>
                       <div class="h6 mb-0 font-weight-bold text-gray-800">
                         <?php 
-                        $query = "SELECT COUNT(*) FROM supplier";
+                        $query = 'SELECT COUNT(*) FROM pets WHERE PET_CATEG = "Dog" AND CUST_ID = '.$_SESSION['CUST_ID'].'';
                         $result = mysqli_query($db, $query) or die(mysqli_error($db));
                         while ($row = mysqli_fetch_array($result)) {
                             echo "$row[0]";
@@ -72,26 +73,27 @@ if ($Aa=='User'){
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                      <i class="fas fa-dog fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-          </div>
-            <!-- Employee ROW -->
+          </div> 
+          
+            <!-- Lab_App ROW -->
           <div class="col-md-3">
-            <!-- Employee record -->
+            <!-- Lab_App record -->
             <div class="col-md-12 mb-3">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-0">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Registered Dogs</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Lab Appointment</div>
                       <div class="h6 mb-0 font-weight-bold text-gray-800">
                         <?php 
-                        $query = "SELECT COUNT(*) FROM pets WHERE PET_CATEG = 'dog'";
+                        $query = 'SELECT COUNT(*) FROM lab_bookings WHERE CUST_ID = '.$_SESSION['CUST_ID'].'';
                         $result = mysqli_query($db, $query) or die(mysqli_error($db));
                         while ($row = mysqli_fetch_array($result)) {
                             echo "$row[0]";
@@ -100,7 +102,7 @@ if ($Aa=='User'){
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -143,10 +145,10 @@ if ($Aa=='User'){
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-0">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Registered Cats</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Cats</div>
                       <div class="h6 mb-0 font-weight-bold text-gray-800">
                         <?php 
-                        $query = "SELECT COUNT(*) FROM pets WHERE PET_CATEG = 'cat'";
+                        $query = 'SELECT COUNT(*) FROM pets WHERE PET_CATEG = "Cat" AND CUST_ID = '.$_SESSION['CUST_ID'].'';
                         $result = mysqli_query($db, $query) or die(mysqli_error($db));
                         while ($row = mysqli_fetch_array($result)) {
                             echo "$row[0]";
@@ -155,7 +157,7 @@ if ($Aa=='User'){
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-user fa-2x text-gray-300"></i>
+                      <i class="fas fa-cat fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -173,12 +175,12 @@ if ($Aa=='User'){
                   <div class="row no-gutters align-items-center">
 
                     <div class="col mr-0">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Product</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Vaccination Schedule</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                           <div class="h6 mb-0 mr-3 font-weight-bold text-gray-800">
                           <?php 
-                          $query = "SELECT COUNT(*) FROM product";
+                          $query = 'SELECT COUNT(*) FROM bookings WHERE reason = "Vaccine" AND owner_code = '.$_SESSION['CUST_ID'].'';
                           $result = mysqli_query($db, $query) or die(mysqli_error($db));
                           while ($row = mysqli_fetch_array($result)) {
                               echo "$row[0]";
@@ -298,7 +300,7 @@ if ($Aa=='User'){
             </div> -->
             
 
-          </div>
+          </div> 
 
 <?php
 include'../includes/footer.php';
